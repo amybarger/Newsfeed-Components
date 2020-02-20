@@ -33,3 +33,29 @@ let menuItems = [
   Step 6: add the menu component to the DOM.
   
 */
+
+// MENU DIV
+
+let menuDiv = document.createElement('div')
+menuDiv.classList.add('menu');
+
+// MENU LIST
+
+let menuList = document.createElement('ul')
+menuList.textContent = 'Students'
+
+let menuList = document.createElement('ul')
+menuList.textContent = 'Faculty'
+
+let menuList = document.createElement('ul')
+menuList.textContent = "What's New"
+
+let menuList = document.createElement('ul')
+menuList.textContent = 'Tech Trends'
+
+let menuList = document.createElement('ul')
+menuList.textContent = 'Music'
+
+let menuList = document.createElement('ul')
+menuList.textContent = 'Log Out'
+
