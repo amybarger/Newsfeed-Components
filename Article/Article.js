@@ -113,42 +113,70 @@ const data = [
 
 */
 
-// ARTICLE DIV
-let articleDiv = document.createElement('div');
-articleDiv.classList.add('article');
+// ARTICLE COMPONENT
 
-// ARTICLE TITLE
+let articleComponent = (articleTitle, articleDate, paragraphOne, paragraphTwo, paragraphThree) => {
 
-let articleTitle = document.createElement('h2');
-articleTitle.textContent = `${data.title}`;
+  // ARTICLE DIV
+  let articleDiv = document.createElement('div');
+  articleDiv.classList.add('article');
 
-articleDiv.appendChild(articleTitle);
+  // ARTICLE TITLE
 
-// DATE OF ARTICLE
+  let articleTitle = document.createElement('h2');
+  articleTitle.textContent = `${data.title}`;
 
-let articleDate = document.createElement('p');
-articleDate.textContent = `${data.date}`;
+  articleDiv.appendChild(articleTitle);
 
-articleTitle.appendChild(articleDate);
+  // DATE OF ARTICLE
 
-// THREE SEPARATE PARAGRAPH ELEMENTS
+  let articleDate = document.createElement('p');
+  articleDate.classList.add('date')
+  articleDate.textContent = `${data.date}`;
 
-let paragraphOne = document.createElement('p');
-paragraphOne.textContent = `${data.firstParagraph}`;
+  articleTitle.appendChild(articleDate);
 
-let paragraphTwo = document.createElement('p');
-paragraphTwo.textContent = `${data.secondParagraph}`;
+  // THREE SEPARATE PARAGRAPH ELEMENTS
 
-let paragraphThree = document.createElement('p');
-paragraphThree.textContent = `${data.thirdParagraph}`;
+  let paragraphOne = document.createElement('p');
+  paragraphOne.textContent = `${data.firstParagraph}`;
 
-articleDiv.appendChild(paragraphOne);
-articleDiv.appendChild(paragraphTwo);
-articleDiv.appendChild(paragraphThree);
+  let paragraphTwo = document.createElement('p');
+  paragraphTwo.textContent = `${data.secondParagraph}`;
 
-// EXPAND BUTTON
+  let paragraphThree = document.createElement('p');
+  paragraphThree.textContent = `${data.thirdParagraph}`;
 
-let buttonExpand = document.createElement('span');
-buttonExpand.textContent = "expand button";
+  articleDiv.appendChild(paragraphOne);
+  articleDiv.appendChild(paragraphTwo);
+  articleDiv.appendChild(paragraphThree);
+
+  // EXPAND BUTTON
+
+  let openButton = document.createElement('button');
+  openButton.classList.add('article-open');
+
+  let buttonToggler = (event) => {
+  openButton.classList.toggle('article-open');
+  articleDate.classList.toggle('toggle-on')
+  }
+
+  let buttonExpand = document.createElement('span');
+  buttonExpand.classList.add("expandButton");
+  buttonExpand.addEventListener('click', buttonToggler);
+
+  articleDiv.appendChild(expandButton);
+  expandButton.appendChild(openButton);
+
+  return articleDiv;
+
+}
+
+let article = document.querySelector('.article')
+
+data.forEach((items) => {
+  let newArticle = articleComponent(items.title, items.date, items.firstParagraph, items.secondParagraph, items.thirdParagraph);
+  articles.appendChild(newArticle);
+})
 
 
