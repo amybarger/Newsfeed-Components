@@ -36,26 +36,38 @@ let menuItems = [
 
 // MENU DIV
 
-let menuDiv = document.createElement('div')
-menuDiv.classList.add('menu');
+let menuElements = (items) => {
 
-// MENU LIST
+  let header = document.querySelector('.header');
 
-let menuList = document.createElement('ul')
-menuList.textContent = 'Students'
+  let menuDiv = document.createElement('div')
+  menuDiv.classList.add('menu');
+  menuDiv.classList.add('menu--open');
 
-let menuList = document.createElement('ul')
-menuList.textContent = 'Faculty'
+  // MENU BUTTON
 
-let menuList = document.createElement('ul')
-menuList.textContent = "What's New"
+  let menuButton = document.querySelector('.menu-button')
 
-let menuList = document.createElement('ul')
-menuList.textContent = 'Tech Trends'
+  menuButton.addEventListener('click', () => 
+  menuDiv.classList.toggle('menu--open'),
+  menuDiv.classList.toggle('menu--open'))
 
-let menuList = document.createElement('ul')
-menuList.textContent = 'Music'
 
-let menuList = document.createElement('ul')
-menuList.textContent = 'Log Out'
+  header.appendChild(menuDiv);
+
+  let list = document.createElement('ul');
+
+  menuDiv.appendChild(list);
+
+  items.forEach(x => {
+    let listing = document.createElement('li');
+    listing.textContent = x;
+    list.appendChild(listing);
+  })
+
+  return menuDiv;
+
+}
+
+menuElements(menuItems);
 
