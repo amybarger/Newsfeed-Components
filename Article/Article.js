@@ -85,6 +85,16 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+
+  {
+    title: 'Developers: Get More Sleep',
+    date: 'Jan 1st, 2019',
+    firstParagraph: `Get more sleep. Sleep is good. I love sleep. There's never enough sleep. Sleepy, sleepy, sleep, sleep, sleep. `,
+
+    secondParagraph: `Get more sleep. Sleep is good. I love sleep. There's never enough sleep. Sleepy, sleepy, sleep, sleep, sleep.`,
+
+    thirdParagraph: `Get more sleep. Sleep is good. I love sleep. There's never enough sleep. Sleepy, sleepy, sleep, sleep, sleep.`
   }
 ];
 
@@ -112,3 +122,66 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+// ARTICLE COMPONENT
+
+let articleComponent = (titleText, dateArticle, paragraph1, paragraph2, paragraph3) => {
+
+  // ARTICLE DIV
+  let articleDiv = document.createElement('div');
+  articleDiv.classList.add('article');
+
+  // ARTICLE TITLE
+
+  let articleTitle = document.createElement('h2');
+  articleTitle.textContent = titleText;
+
+  articleDiv.appendChild(articleTitle);
+
+  // DATE OF ARTICLE
+
+  let articleDate = document.createElement('p');
+  articleDate.classList.add('date')
+  articleDate.textContent = dateArticle;
+
+  articleTitle.appendChild(articleDate);
+
+  // THREE SEPARATE PARAGRAPH ELEMENTS
+
+  let paragraphOne = document.createElement('p');
+  paragraphOne.textContent = paragraph1;
+
+  let paragraphTwo = document.createElement('p');
+  paragraphTwo.textContent = paragraph2;
+
+  let paragraphThree = document.createElement('p');
+  paragraphThree.textContent = paragraph3;
+
+  articleDiv.appendChild(paragraphOne);
+  articleDiv.appendChild(paragraphTwo);
+  articleDiv.appendChild(paragraphThree);
+
+  // EXPAND BUTTON
+
+  let buttonToggler = (event) => {
+  articleDiv.classList.toggle('article-open');
+  }
+
+  let buttonExpand = document.createElement('span');
+  buttonExpand.classList.add("expandButton");
+  buttonExpand.addEventListener('click', buttonToggler);
+  buttonExpand.textContent = '\u25b2'
+
+  articleDiv.appendChild(buttonExpand);
+
+  return articleDiv;
+}
+
+let article = document.querySelector('.articles')
+
+data.forEach((items) => {
+  let newArticle = articleComponent(items.title, items.date, items.firstParagraph, items.secondParagraph, items.thirdParagraph);
+  article.appendChild(newArticle);
+})
+
+

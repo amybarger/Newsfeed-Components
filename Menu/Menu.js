@@ -33,3 +33,41 @@ let menuItems = [
   Step 6: add the menu component to the DOM.
   
 */
+
+// MENU DIV
+
+let menuElements = (items) => {
+
+  let header = document.querySelector('.header');
+
+  let menuDiv = document.createElement('div')
+  menuDiv.classList.add('menu');
+  menuDiv.classList.add('menu--open');
+
+  // MENU BUTTON
+
+  let menuButton = document.querySelector('.menu-button')
+
+  menuButton.addEventListener('click', () => 
+  menuDiv.classList.toggle('menu--open'),
+  menuDiv.classList.toggle('menu--open'))
+
+
+  header.appendChild(menuDiv);
+
+  let list = document.createElement('ul');
+
+  menuDiv.appendChild(list);
+
+  items.forEach(x => {
+    let listing = document.createElement('li');
+    listing.textContent = x;
+    list.appendChild(listing);
+  })
+
+  return menuDiv;
+
+}
+
+menuElements(menuItems);
+
